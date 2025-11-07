@@ -32,7 +32,6 @@ in
         ;
     };
     users.${username} = {
-      #TODO: setup the wm here
       #imports = [ ./../home ];
       home = {
         username = "${username}";
