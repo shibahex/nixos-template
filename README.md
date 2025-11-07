@@ -179,3 +179,7 @@ default = mkHost {
 ```
 
 Users can copy this as a starting point for their own installations.
+
+Template based on:
+https://gitlab.com/theblackdon/black-don-os
+https://gitlab.com/Zaney/zaneyos
