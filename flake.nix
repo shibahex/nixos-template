@@ -31,8 +31,11 @@
           inherit username;
         };
         modules = [
+	  ./hosts/${hostname}
           ./profiles/${profile}
           ./modules/applications
+	  ./modules/core
+	  ./modules/desktop
         ];
       };
   in {
