@@ -1,12 +1,6 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}:
+{ lib, config, ... }:
 with lib;
-let
-  cfg = config.local.hardware-clock;
+let cfg = config.local.hardware-clock;
 in
 {
   options.local.hardware-clock = {

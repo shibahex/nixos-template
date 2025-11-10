@@ -1,6 +1,2 @@
-{inputs, ...}: {
-  imports = [
-    ./packages.nix
-  ];
-}
+{ ... }: { imports = [ ./packages.nix ]; }
 

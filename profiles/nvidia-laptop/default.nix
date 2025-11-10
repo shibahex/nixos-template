@@ -1,11 +1,8 @@
 { host, ... }:
-let
-  inherit (import ../../hosts/${host}/variables.nix) intelID nvidiaID;
+let inherit (import ../../hosts/${host}/variables.nix) intelID nvidiaID;
 in
 {
-  imports = [
-    ../../modules/drivers
-  ];
+  imports = [ ../../modules/drivers ];
   # Enable GPU Drivers
   drivers.amdgpu.enable = false;
   drivers.nvidia.enable = true;

@@ -9,50 +9,44 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    flake-utils,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
+  outputs = { nixpkgs, flake-utils, ... }@inputs:
+    let
+      system = "x86_64-linux";
 
-    # Helper function to create a host configuration
-    mkHost = {
-      hostname,
-      profile,
-      username,
-    }:
-      nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          host = hostname;
-          inherit profile;
-          inherit username;
+      # Helper function to create a host configuration
+      mkHost = { hostname, profile, username, }:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            host = hostname;
+            inherit profile;
+            inherit username;
+          };
+          modules = [
+            ./hosts/${hostname}
+            ./profiles/${profile}
+            ./modules/applications
+            ./modules/core
+            ./modules/desktop
+          ];
         };
-        modules = [
-	  ./hosts/${hostname}
-          ./profiles/${profile}
-          ./modules/applications
-	  ./modules/core
-	  ./modules/desktop
-        ];
-      };
-  in {
-    nixosConfigurations = {
-      # Default template configuration
-      # Users will create their own host configurations during installation
-      default = mkHost {
-        hostname = "default";
-        profile = "amd";
-        username = "user";
-      };
+    in
+    {
+      nixosConfigurations = {
+        # Default template configuration
+        # Users will create their own host configurations during installation
+        default = mkHost {
+          hostname = "default";
+          profile = "amd";
+          username = "user";
+        };
 
-      nixos-desktop = mkHost {
-        hostname = "nixos-desktop";
-        profile = "nvidia";
-        username = "shiba";
+        nixos-desktop = mkHost {
+          hostname = "nixos-desktop";
+          profile = "nvidia";
+          username = "shiba";
+        };
       };
     };
-  };
 }

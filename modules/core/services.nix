@@ -1,4 +1,4 @@
-{profile, ...}: {
+{ ... }: {
   # Services to start
   services = {
     fstrim.enable = true; # SSD Optimizer
@@ -9,9 +9,8 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
-      wireplumber.enable = true;  # Enable WirePlumber session manager
+      wireplumber.enable = true; # Enable WirePlumber session manager
     };
   };
-
 
 }

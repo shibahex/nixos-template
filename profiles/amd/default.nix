@@ -1,7 +1,5 @@
-{host, ...}: {
-  imports = [
-    ../../modules/drivers
-  ];
+{ ... }: {
+  imports = [ ../../modules/drivers ];
   # Enable GPU Drivers
   drivers.amdgpu.enable = true;
   drivers.nvidia.enable = false;

@@ -1,11 +1,6 @@
-{ lib
-, pkgs
-, config
-, ...
-}:
+{ lib, config, ... }:
 with lib;
-let
-  cfg = config.drivers.nvidia-prime;
+let cfg = config.drivers.nvidia-prime;
 in
 {
   options.drivers.nvidia-prime = {

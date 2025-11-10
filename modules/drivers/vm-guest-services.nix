@@ -1,12 +1,6 @@
-{
-  lib,
-  pkgs,
-  config,
-  ...
-}:
+{ lib, config, ... }:
 with lib;
-let
-  cfg = config.vm.guest-services;
+let cfg = config.vm.guest-services;
 in
 {
   options.vm.guest-services = {

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{ pkgs, ... }: {
   programs = {
     neovim = {
       enable = true;
@@ -10,9 +6,9 @@
     };
   };
 
-  
-  environment.systemPackages = with pkgs; [
-    librewolf
-    # packages here
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      librewolf
+      # packages here
+    ];
 }
